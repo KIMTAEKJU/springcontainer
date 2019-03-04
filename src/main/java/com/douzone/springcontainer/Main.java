@@ -47,5 +47,20 @@ public class Main {
 		user = (User)ac.getBean("usr");
 		System.out.println(user.getName());
 		
+		// 오류: 같은 타입의 빈이 2개이상 존재하면 타입으로 빈을 가져올 수 없다.
+		// ac.getBean(User.class);
+		
+		User user2 = (User)ac.getBean("usr2");
+		System.out.println(user2);
+		
+		User user3 = (User)ac.getBean("usr3");
+		System.out.println(user3);
+		
+		Friend friend = (Friend)ac.getBean("friend");
+		System.out.println(friend);
+		
+		User user4 = (User)ac.getBean("usr4");
+		System.out.println(user4);
+		
 	}
 }
