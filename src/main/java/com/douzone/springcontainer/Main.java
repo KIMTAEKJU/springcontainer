@@ -3,8 +3,13 @@ package com.douzone.springcontainer;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+
+import com.douzone.springcontainer.user.Friend;
+import com.douzone.springcontainer.user.User;
+import com.douzone.springcontainer.user.User1;
 
 public class Main {
 
@@ -23,14 +28,14 @@ public class Main {
 		// XML Bean 설정인 경우에는 id를 주지 않으면 에러!
 		// id 대신에 타입으로 빈을 가져 올 수 있다.
 		BeanFactory bf2 =
-				new XmlBeanFactory(new ClassPathResource("config/applicationContext.xml"));
+				new XmlBeanFactory(new ClassPathResource("config/user/applicationContext.xml"));
 		user = bf2.getBean(User1.class);
 		System.out.println(user.getName());
 	}
 	
 	public static void testApplicationContext() {
 		ApplicationContext ac = 
-				new ClassPathXmlApplicationContext("config/applicationContext.xml");
+				new ClassPathXmlApplicationContext("config/user/applicationContext.xml");
 		
 		User1 user1 = ac.getBean(User1.class);
 		System.out.println(user1.getName());
@@ -62,5 +67,6 @@ public class Main {
 		User user4 = (User)ac.getBean("usr4");
 		System.out.println(user4);
 		
+		((ConfigurableApplicationContext)ac).close();
 	}
 }
