@@ -166,5 +166,5 @@
 	      class="com.douzone.springcontainer.videosystem.BlankDisc"
 		  p:title="Avengers Infinite War"
 		  p:studio="MARVEL"
-		  p:actors="actorList"/>
+		  p:actors-ref="actorList"/>
 </beans>
