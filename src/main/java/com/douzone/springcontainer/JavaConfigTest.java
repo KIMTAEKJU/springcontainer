@@ -47,7 +47,7 @@ public class JavaConfigTest {
 		((ConfigurableApplicationContext)appCtx).close();
 	}
 	
-	// Java Config 03
+	// Java Config 03 - 자동설정
 	// Component Scanning( @Component, @Autowired )
 	public static void testJavaConfig03() {
 		ApplicationContext appCtx = 
@@ -65,7 +65,7 @@ public class JavaConfigTest {
 		((ConfigurableApplicationContext)appCtx).close();
 	}
 
-	// Java Config 04
+	// Java Config 04 - 명시적 설정
 	// ComponentScan를 사용하지 않음.
 	// Java Config Class의 메소드 와 @Bean를 사용
 	public static void testJavaConfig04() {

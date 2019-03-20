@@ -13,12 +13,13 @@ import com.douzone.springcontainer.videosystem.DigitalVideoDisc;
 
 public class XMLConfigTest {
 
+	
 	public static void main(String[] args) {
-		//testXMLConfig01();
+		testXMLConfig01();
 		testXMLConfig02();
 	}
 
-	// XML Config01
+	// XML Config01 - 자동설정
 	// annotation config
 	public static void testXMLConfig01() {
 		ApplicationContext appCtx =
@@ -33,7 +34,7 @@ public class XMLConfigTest {
 		((ConfigurableApplicationContext)appCtx).close();
 	}
 	
-	// XML Config01
+	// XML Config01 - 명시적 설정
 	// bean config
 	public static void testXMLConfig02() {
 		ApplicationContext appCtx =
@@ -42,7 +43,7 @@ public class XMLConfigTest {
 		DigitalVideoDisc dvd = appCtx.getBean( Avengers.class );
 		System.out.println(dvd);
 		
-		dvd = (DigitalVideoDisc)appCtx.getBean( "digitalVideoDisc" );
+		dvd = (DigitalVideoDisc)appCtx.getBean( "avengersInfinityWar" );
 		System.out.println(dvd);
 		
 		DVDPack dvdPack = appCtx.getBean( DVDPack.class );
