@@ -10,6 +10,8 @@ import com.douzone.springcontainer.user.User;
 import com.douzone.springcontainer.videosystem.DVDPlayer;
 import com.douzone.springcontainer.videosystem.DigitalVideoDisc;
 
+import config.mixing.videosystem.DVDPlayerConfig;
+import config.mixing.videosystem.VideoSystemConfig;
 import config.user.AppConfig01;
 
 public class JavaConfigTest {
@@ -18,7 +20,9 @@ public class JavaConfigTest {
 		// testJavaConfig01();
 		// testJavaConfig02();
 		// testJavaConfig03();
-		testJavaConfig04();
+		// testJavaConfig04();
+		testJavaConfig05();
+		testJavaConfig06();
 	}
 
 	// Java Config 01
@@ -81,7 +85,41 @@ public class JavaConfigTest {
 		//DVDPlayer dvdPlayer = (DVDPlayer)appCtx.getBean( "dvdPlayer2" ); 
 		//dvdPlayer.play();
 		
-		
 		((ConfigurableApplicationContext)appCtx).close();
 	}
+	
+	// Java Config 05 - mixing 01
+	// Java Config <- Java Config 
+	public static void testJavaConfig05() {
+		ApplicationContext appCtx = 
+				new AnnotationConfigApplicationContext(DVDPlayerConfig.class);
+	
+		DVDPlayer dvdPlayer = appCtx.getBean( DVDPlayer.class );
+		dvdPlayer.play();
+
+		((ConfigurableApplicationContext)appCtx).close();
+	}
+	
+	// Java Config 06 - mixing 02
+	// Java Config <- Java Config + Java Config 
+	public static void testJavaConfig06() {
+		ApplicationContext appCtx = 
+				new AnnotationConfigApplicationContext(VideoSystemConfig.class);
+	
+		DVDPlayer dvdPlayer = appCtx.getBean( DVDPlayer.class );
+		dvdPlayer.play();
+
+		((ConfigurableApplicationContext)appCtx).close();
+	}
+
+	// Java Config 07 - mixing 03
+	// Java Config <- Java Config + XML Config 
+	public static void testJavaConfig07() {
+	}
+
+	// Java Config 08 - mixing 04
+	// Java Config <- XML Config 
+	public static void testJavaConfig08() {
+	}
+	
 }
